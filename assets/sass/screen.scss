@@ -1,0 +1,444 @@
+/* ==========================================================================
+   Table of contents
+   ========================================================================== */
+
+/* 
+test
+    1. Imports
+    2. WHO KNOWS???
+
+/*
+
+
+/* ==========================================================================
+   Normalize CSS - v3.0.2 - MIT License 
+   ========================================================================== */
+
+@import 'normalize';
+
+/* ==========================================================================
+   Bourbon
+   ========================================================================== */
+
+@import 'bourbon/bourbon';
+
+/* ==========================================================================
+   Neat
+   ========================================================================== */
+
+//$visual-grid: true;
+$visual-grid-color: #bbb;
+@import 'neat/neat-helpers';
+@import 'neat/neat';
+
+/* =========================================================================
+   Variables & Mixins
+   ========================================================================= */   
+
+$base-font-size : 16; //set the base font for calculations below 
+
+//calculate the font size from pixels to rems
+
+@mixin font-size ($pxSizeValue){ 
+    $remValue: ($pxSizeValue / $base-font-size); 
+    font-size: $pxSizeValue + px; 
+    font-size: $remValue + rem; 
+}
+
+//calculate the line height from pixels to rems
+
+@mixin line-height ($pxSizeValue){ 
+    $remValue: ($pxSizeValue / $base-font-size); 
+    line-height: $pxSizeValue + px; 
+    line-height: $remValue + rem; 
+}
+
+@mixin base-font-family {
+    font-family: $georgia;
+    @include line-height(28);
+    @include font-size(18);
+} 
+
+//Body Font Styles
+
+$body-font-family: $georgia;
+$body-font-size: 18;
+$body-font-lineheight: 30;
+$body-font-color: #000000;
+$body-hyperlink-color: #444444;
+
+//Header Font Styles
+$post-title-font-family: "Lato";
+$post-title-font-size: 40;
+$post-title-font-color: #000;
+
+/*colors*/
+$light-gray: #E8E4E9;
+
+/* =========================================================================  
+   Icons
+   ========================================================================= */
+
+/* Import the font file with the icons in it */
+@font-face {
+    font-family: "casper-icons";
+    src:url("../fonts/casper-icons.eot");
+    src:url("../fonts/casper-icons.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/casper-icons.woff") format("woff"),
+        url("../fonts/casper-icons.ttf") format("truetype"),
+        url("../fonts/casper-icons.svg#icons") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Apply these base styles to all icons */
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    font-family: "casper-icons", "Open Sans", sans-serif;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    text-decoration: none !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Each icon is created by inserting the correct character into the
+   content of the :before pseudo element. Like a boss. */
+.icon-ghost:before {
+    content: "\f600";
+}
+.icon-feed:before {
+    content: "\f601";
+}
+.icon-twitter:before {
+    content: "\f602";
+    font-size: 1.5em;
+}
+.icon-google-plus:before {
+    content: "\f603";
+    font-size: 1.4em;
+}
+.icon-facebook:before {
+    content: "\f604";
+    font-size: 1.4em;
+}
+.icon-arrow-left:before {
+    content: "\f605";
+}
+.icon-stats:before {
+    content: "\f606";
+}
+.icon-location:before {
+    content: "\f607";
+    margin-left: -3px; /* Tracking fix */
+}
+.icon-link:before {
+    content: "\f608";
+}
+
+/* ==========================================================================
+   General Styles
+   ========================================================================== */
+
+h1, h2, h3, h4, h5 {
+    font-family: "Lato"
+}
+
+p {
+    @include base-font-family;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ==========================================================================
+   Layout Styles - Using Neat Documentation  
+   ========================================================================== */
+
+nav {
+    @include span-columns(8);
+    @include shift(2);
+}
+
+.banner {
+    @include span-columns(6);
+    @include shift(3);
+}
+
+.site-wrapper{
+    @include outer-container;
+}
+
+.content {
+    @include span-columns(6);
+    @include shift(3)
+}
+
+.site-footer {
+    @include span-columns(6);
+    @include shift (3);
+}
+/*Navigation*/
+
+nav {
+    padding: 20px 0 0 0;
+    
+    ul {
+        list-style-type: none;
+        @include font-size (13);
+        font-family: "lato";
+        font-weight: 800;
+        text-transform: uppercase; 
+        letter-spacing: 3px;
+        
+        li { 
+            display: inline;
+            padding-right: 40px;
+        }
+    }
+    
+    .links {
+        text-align: center;
+        margin-bottom: 20px; 
+        padding-bottom: 10px;
+    }
+
+    
+    a {
+        text-decoration: none;
+        color: #999;
+    }
+    
+}
+
+.banner {
+
+    padding: 50px 0 40px 0;
+
+    h1 {
+        text-align: center;
+        @include font-size(32);
+        margin: .6em 0;
+    }
+
+    p {
+        @include font-size(18);
+        @include line-height(30);        
+        text-align: center;
+        margin: 0 15px;
+        color: #999;
+    }
+
+    .author-image{
+    
+        img {
+            max-width: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: block;
+            margin: auto;
+        }
+    }
+    
+    .site-description {
+        margin: auto;
+        width: 350px;
+    }
+ 
+}
+/* =========================================================================
+   Post Styles 
+   ========================================================================= */
+ 
+.content {
+    h1 {
+        @include font-size(40);
+        text-align: center;
+        font-weight: 800;
+        margin-top: 40px;
+    }
+    
+    h2 {
+        @include font-size(30);
+        text-align: left;
+        font-weight: 800;
+        margin-bottom: 0px;
+ 
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+    }
+    
+    h3 {
+        @include font-size(26);
+    }
+    
+    h4,h5,h6 {
+        @include font-size(22);
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+
+    ul, ol {
+        font-family: $georgia;
+        @include line-height(30);
+        @include font-size(18);
+    }
+    img {
+        max-width: 100%
+    }
+    blockquote {
+        padding: 5px 30px;
+        margin: 10px 0;
+        background-color: #f5f5f7;
+        color: #444;
+    }
+    hr { 
+        display: block; 
+        height: 1px;
+        border: 0; 
+        border-top: 1px solid $light-gray;
+        margin: 1em 0;
+        padding: 0; 
+    }
+ 
+    
+}
+
+.post {
+    padding: 40px 0 30px 0; 
+
+    section.post-meta {
+        @include font-size(13);
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 1.1px;
+        font-family: lato;
+    }
+    
+    &.about {
+        padding-top: 0px;
+    }
+}
+ 
+.content article:last-of-type {
+    border: 0px;
+}
+
+/* =========================================================================  
+   List of posts
+   ========================================================================= */ 
+
+.list-excerpt {
+    border-bottom: 1px solid $light-gray;
+    padding-top: 20px;
+      
+    h2 {
+        @include font-size(30);
+        text-align: left;
+    }
+}
+
+.list-excerpt::after {
+    display: block;
+    content: "";
+    position: relative;
+    left: 50%;
+    margin-left: -5px;
+    bottom: -34px;
+    background: #fff;
+    border: 1px solid $light-gray;
+    border-radius: 100%;
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    box-shadow: #FFF 0 0 0 5px;
+}
+
+.list-excerpt:last-of-type::after {
+    display: none;
+}
+
+/* ========================================================================= 
+   Pagination
+   ========================================================================= */
+ 
+.pagination{
+    width: 100%;
+    margin: 0px;
+}
+
+.older-posts {
+    float: right;
+}
+
+.newer-posts {
+    float: left;
+}
+
+.older-posts, .newer-posts {
+    border: 1px solid #bbb;
+    padding: 10px 20px;
+    border-radius: 6px;
+    color: #aaa;
+    
+    &:hover {
+        border-color: #999;
+        color: #888;
+    } 
+    
+    &:active {
+        border-color: #999;
+        color: #888;
+    }
+}
+
+
+/* =========================================================================
+   Site Footer
+   ========================================================================= */
+
+.site-footer {
+    margin-top: 50px;
+    margin-bottom: 70px; 
+    text-align: center;
+    color: #999;
+}
+
+.share {
+        text-align: center;
+        margin-top: 20px;
+        margin-right: 10px;
+
+        a {
+            color: #ccc;
+            text-decoration: none;    
+            margin-right: 20px;
+        }
+        a:first-child {
+            margin-left: 20px;
+        }
+    }
+
+/* =========================================================================  
+   Tag Pages
+   ========================================================================= */
+
+header.tag-head {
+    @include span-columns(6);
+    @include shift(3);
+
+    h1 {
+        @include font-size(40);
+        text-align: center;
+        font-weight: 800;
+        margin-top: 40px;
+    }
+ 
+}
+
