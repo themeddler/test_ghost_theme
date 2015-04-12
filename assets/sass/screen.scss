@@ -35,7 +35,9 @@ $visual-grid-color: #bbb;
    Variables & Mixins
    ========================================================================= */   
 
-$base-font-size : 16; //set the base font for calculations below 
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700,900);
+
+$base-font-size: 16; //set the base font for calculations below 
 
 //calculate the font size from pixels to rems
 
@@ -68,7 +70,7 @@ $body-font-color: #000000;
 $body-hyperlink-color: #444444;
 
 //Header Font Styles
-$post-title-font-family: "Lato";
+$post-title-font-family: "Lato","Helvetica Neue", "Arial", Sans-Serif;
 $post-title-font-size: 40;
 $post-title-font-color: #000;
 
@@ -190,7 +192,7 @@ nav {
     ul {
         list-style-type: none;
         @include font-size (13);
-        font-family: "lato";
+        font-family: $post-title-font-family;
         font-weight: 800;
         text-transform: uppercase; 
         letter-spacing: 3px;
@@ -318,7 +320,7 @@ nav {
         text-align: center;
         text-transform: uppercase;
         letter-spacing: 1.1px;
-        font-family: lato;
+        font-family: $post-title-font-family;
     }
     
     &.about {
