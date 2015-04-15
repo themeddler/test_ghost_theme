@@ -169,12 +169,6 @@ nav {
 .banner {
     @include span-columns(6);
     @include shift(3);
-
-    @include media(min-width 320px max-width 480px, 6){
-        @include span-columns(6);
-       display: block;
-        margin: auto; 
-    }
 }
 
 .site-wrapper{
@@ -184,20 +178,16 @@ nav {
 .content {
     @include span-columns(6);
     @include shift(3);
-    
-    @include media(min-width 320px max-width 480px, 6) {
-        @include span-columns(6);
-        @include shift(0);
-        @include pad(default)
-    }
-
 }
 
 .site-footer {
     @include span-columns(6);
     @include shift (3);
 }
-/*Navigation*/
+
+/* =========================================================================
+   Navigation
+   ========================================================================= */    
 
 nav {
     padding: 20px 0 0 0;
@@ -209,7 +199,6 @@ nav {
         font-weight: 800;
         text-transform: uppercase; 
         letter-spacing: 3px;
-        
         li { 
             display: inline;
             padding-right: 40px;
@@ -227,8 +216,44 @@ nav {
         text-decoration: none;
         color: #999;
     }
-    
+}    
+
+.js .nav-collapse {
+  clip: rect(0 0 0 0);
+  max-height: 0;
+  position: absolute;
+  display: block;
+  overflow: hidden;
+  zoom: 1;
 }
+
+.nav-collapse.opened {
+  max-height: 9999px;
+}
+
+.nav-toggle {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+@include media(min-width 520px) {
+  .js .nav-collapse {
+    position: relative;
+  }
+  .js .nav-collapse.closed {
+    max-height: none;
+  }
+  .nav-toggle {
+    display: none;
+  }
+}
+
+/* Author Banner */
 
 .banner {
 
@@ -270,6 +295,7 @@ nav {
     }
  
 }
+
 /* =========================================================================
    Post Styles 
    ========================================================================= */
@@ -461,4 +487,51 @@ header.tag-head {
     }
  
 }
+
+/* Media Queries */
+
+@include media(min-width 320px max-width 519px, 6){
+    .banner {
+        @include span-columns(6);
+        display: block;
+        margin: auto;
+    }
+    
+    .content {
+        @include span-columns(6);
+        @include shift(0);
+        @include pad(default);
+    }
+    
+    nav {
+        @include span-columns(6);
+        @include shift(0);
+    }
+}
  
+@include media(max-width 519px){
+    nav {
+        padding-top: 0px;
+
+        ul {
+            display: block;
+            padding-left: 0px;
+            background-color: #999;
+            margin: 0px;
+            li {
+                display: block;
+                padding: 20px 0;
+                a {
+                    color: #FFFFFF;
+                }
+            }
+        }
+    }
+    
+    a.nav-toggle {
+        float: right; 
+        @include font-size(22);
+        margin: 20px 20px 0 0;
+        font-weight: 800;
+    }
+}
