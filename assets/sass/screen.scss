@@ -240,27 +240,12 @@ nav {
   -o-user-select: none;
   user-select: none;
 }
-
-@include media(min-width 520px) {
-  .js .nav-collapse {
-    position: relative;
-  }
-  .js .nav-collapse.closed {
-    max-height: none;
-  }
-  .nav-toggle {
-    display: none;
-  }
-}
-
 /* Author Banner */
 
 .banner {
 
     padding: 50px 0 40px 0;
-    @include media (min-width 320px max-width 480px){
-        padding-top: 20px;
-    }
+
     h1 {
         text-align: center;
         @include font-size(32);
@@ -279,9 +264,6 @@ nav {
     
         img {
             max-width: 200px;
-            @include media (min-width 320px max-width 480px, 6){
-                max-width: 150px;
-            }
             border-radius: 50%;
             overflow: hidden;
             display: block;
@@ -490,11 +472,38 @@ header.tag-head {
 
 /* Media Queries */
 
+@include media(min-width 520px max-width 970px, 10){
+    .content {
+        @include span-columns(6);
+        @include shift(2);
+    }
+    
+    nav {
+        @include span-columns(10);
+        @include shift(0);
+    }
+
+    .banner {
+        @include span-columns(10);
+        display: block;
+        margin: auto;
+    }
+}
+
+@include media(min-width 520px max-width 767px, 8){
+    .content {
+        @include span-columns(6);
+        @include shift(1);
+    }
+}
+
 @include media(min-width 320px max-width 519px, 6){
     .banner {
         @include span-columns(6);
         display: block;
         margin: auto;
+        padding-top: 20px;
+ 
     }
     
     .content {
@@ -507,9 +516,15 @@ header.tag-head {
         @include span-columns(6);
         @include shift(0);
     }
+    
+    .author-image {
+        img {
+            max-width: 150px;
+        }
+    }
 }
  
-@include media(max-width 519px){
+@include media(max-width 767px){
     nav {
         padding-top: 0px;
 
@@ -535,3 +550,17 @@ header.tag-head {
         font-weight: 800;
     }
 }
+
+@include media(min-width 768px) {
+  .js .nav-collapse {
+    position: relative;
+  }
+  .js .nav-collapse.closed {
+    max-height: none;
+  }
+  .nav-toggle {
+    display: none;
+  }
+}
+
+
