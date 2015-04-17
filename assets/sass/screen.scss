@@ -254,7 +254,7 @@ nav {
 
     p {
         @include font-size(18);
-        @include line-height(30);        
+        @include line-height(26);        
         text-align: center;
         margin: 0 15px;
         color: #999;
@@ -503,13 +503,29 @@ header.tag-head {
         display: block;
         margin: auto;
         padding-top: 20px;
- 
+        padding-bottom: 0px;
+        .site-description {
+            @include span-columns(6);
+            padding: 0 50px;
+        }
     }
     
+    .share {
+        @include span-columns(6);
+    }
+ 
     .content {
         @include span-columns(6);
         @include shift(0);
-        @include pad(default);
+        @include pad(30px);
+        
+        .post {
+            padding: 10px 0 10px 0;
+    
+            &::after {
+                bottom: -15px;
+            }
+        }
     }
     
     nav {
@@ -517,11 +533,6 @@ header.tag-head {
         @include shift(0);
     }
     
-    .author-image {
-        img {
-            max-width: 150px;
-        }
-    }
 }
  
 @include media(max-width 767px){
@@ -545,11 +556,31 @@ header.tag-head {
     
     a.nav-toggle {
         float: right; 
-        @include font-size(22);
+        @include font-size(28);
         margin: 20px 20px 0 0;
         font-weight: 800;
     }
+    
+    .banner {
+        h1 {
+            @include font-size(26);
+        }
+        .author-image {
+            img {
+                max-width: 160px;
+            }
+        }
+        
+        p {
+            @include font-size(16);
+            @include line-height(22);        
+            text-align: center;
+            margin: 0 10px;
+            color: #999;
+        }
+    }
 }
+
 
 @include media(min-width 768px) {
   .js .nav-collapse {
