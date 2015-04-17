@@ -654,8 +654,8 @@ header.tag-head {
       nav ul li {
         display: block;
         padding: 20px 0; }
-        nav ul li a {
-          color: #FFFFFF; }
+      nav ul a {
+        color: #FFFFFF; }
 
   a.nav-toggle {
     float: right;
